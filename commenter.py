@@ -60,8 +60,6 @@ def write_comment(filename, packet_number, comment, output):
 
                 count += 1
             block._write(out_fp)
-            if count > 1:
-                break
 
     return changed
 
@@ -113,11 +111,11 @@ if __name__ == "__main__":
         )
 
     if not success:
-        print(f"Error: operation failed, packet not found")
+        print(f"\nError: operation failed, packet not found")
         if not arg_dict["read"]:
             os.remove(
                 savefile_name
             )  # I dont like it here, but it is the only way to remove the file
         sys.exit(1)
     else:
-        print("Success")
+        print("\nSuccess")

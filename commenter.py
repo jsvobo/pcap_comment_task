@@ -18,6 +18,7 @@ def read_comment(filename, packet_number):
                 if count == int(packet_number):
                     try:
                         # print(block.options["opt_comment"])
+                        print(f"Packet {arg_dict['packet number']} found:")
                         packet = block
                         packet_json = {
                             "interface_id": packet.interface_id,
@@ -32,12 +33,17 @@ def read_comment(filename, packet_number):
                                 key: value
                                 for key, value in block.options.items()  # finally, the options, which contain the comment
                             },
+                            "comment": (
+                                block.options["opt_comment"]
+                                if "opt_comment" in block.options.keys()
+                                else None
+                            ),
                         }
 
                         print(json.dumps(packet_json, indent=4))
 
                     except KeyError:
-                        print("No comment found")
+                        print("Error when fetching packet data")
                         sys.exit(1)
 
                     return True

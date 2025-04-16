@@ -1,6 +1,7 @@
 # pcap_comment_task
 
-Task is to either add or read comments appended to individual packets in a pcapng file.
+Task is to write a python code, which can either add comments to packets or read the packet and print it out. 
+The file format supported is pcapng.
 You will find the short script and a dummy file collected by the author with around 800 packets.
 
 ## Installation
